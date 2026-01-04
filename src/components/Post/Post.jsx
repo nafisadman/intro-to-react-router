@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router";
+import { GoArrowUpRight } from "react-icons/go";
 
 const Post = ({ post }) => {
   const { id, title } = post;
@@ -9,13 +10,29 @@ const Post = ({ post }) => {
     navigate(`/posts/${id}`);
   };
 
+  const postStyle = {
+    border: "2px solid #646cff",
+    borderRadius: "20px",
+    padding: "10px",
+    margin: "10px",
+  };
+
   return (
-    <div style={{ border: "2px solid red" }}>
-      <h3>{title}</h3>
-      <Link to={`/posts/${id}`}>
-        <button>Show Details (Link)</button>
-      </Link>
-      <button onClick={handleNavigate}>Show Details (useNavigate)</button>
+    <div style={postStyle}>
+      <p>{title}</p>
+      <div
+        style={{
+          display: "flex",
+          gap: "8px",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Link to={`/posts/${id}`}>
+          <button>Visit <GoArrowUpRight /> [Link]</button>
+        </Link>
+        <button onClick={handleNavigate}>Visit <GoArrowUpRight /> [useNavigate]</button>
+      </div>
     </div>
   );
 };
